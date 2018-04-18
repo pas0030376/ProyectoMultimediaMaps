@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ProyectoMultimediaMaps</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="title_activity_lugares_favoritos">LugaresFavoritosActivity</string>
+    <string name="title_activity_add_place">addPlaceActivity</string>
+    <item name="visible" type="id" />
+    <item name="masked" type="id" />
+    <string name="title_activity_images">ImagesActivity</string>
+</resources>
