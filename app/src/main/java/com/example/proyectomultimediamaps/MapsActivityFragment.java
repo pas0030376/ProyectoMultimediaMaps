@@ -1,15 +1,17 @@
 package com.example.proyectomultimediamaps;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.location.LocationListener;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import org.osmdroid.api.IMapController;
+import org.osmdroid.views.overlay.Marker;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
@@ -35,26 +37,48 @@ public class MapsActivityFragment extends Fragment {
         map.setMultiTouchControls(true);
         IMapController mapController = map.getController();
 
-
-        Intent i = getActivity().getIntent();
+                Intent i = getActivity().getIntent();
                 if (i != null) {
-                    double latitude = (double) i.getSerializableExtra("lat");
-                    double longitude = (double) i.getSerializableExtra("longi");
-                    GeoPoint startPoint = new GeoPoint(latitude, longitude);
+                    Places place = (Places) i.getSerializableExtra("place");
+                    Log.w("place",place.getNombre());
+                    if (place != null) {
+                        getActivity().setTitle(place.getNombre());
+                        double latitude = place.getLat();
+                        double longitude = place.getLongi();
+                        GeoPoint startPoint = new GeoPoint(latitude, longitude);
+                        mapController.setZoom(15);
+                        mapController.setCenter(startPoint);
+
+                        mapController.setZoom(15);
+                        Marker marker = new Marker(map);
+                        marker.setPosition(startPoint);
+                        marker.setTitle(place.getNombre());
+                        map.getOverlays().add(marker);
+                    } else {
+                        GeoPoint startPoint = new GeoPoint(41.39, 2.154);
+                        mapController.setZoom(15);
+                        mapController.setCenter(startPoint);
+
+                        Marker marker = new Marker(map);
+                        marker.setPosition(startPoint);
+                        marker.setTitle("Barcelona");
+                        map.getOverlays().add(marker);
+                    }
+                }else{
+                    GeoPoint startPoint = new GeoPoint(41.39, 2.154);
                     mapController.setZoom(15);
                     mapController.setCenter(startPoint);
-                    overItem = new OverlayItem("Favorite", "Position", startPoint);
-                    marker= this.getResources().getDrawable(R.drawable.marker_default);
-                    overItem.setMarker(marker);
-                }else {
-                    GeoPoint startPoint = new GeoPoint(41.39, 2.154);
-                    mapController.setZoom(9);
-                    mapController.setCenter(startPoint);
-                    overItem = new OverlayItem("BCN", "Barcelona", startPoint);
-                    marker = this.getResources().getDrawable(R.drawable.marker_default);
-                    overItem.setMarker(marker);
+
+                    Marker marker = new Marker(map);
+                    marker.setPosition(startPoint);
+                    marker.setTitle("Barcelona");
+                    map.getOverlays().add(marker);
                 }
+
         return view;
+
+       // private final LocationListener
+
     }
 
 }

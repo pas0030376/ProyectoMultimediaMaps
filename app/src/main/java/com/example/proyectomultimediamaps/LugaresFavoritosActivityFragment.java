@@ -47,7 +47,6 @@ public class LugaresFavoritosActivityFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_lugares_favoritos, container, false);
         ListView lvplaces = view.findViewById(R.id.lvplaces);
         getActivity().setTitle("Favoritos");
-
         DatabaseReference query = FirebaseDatabase.getInstance()
                 .getReference()
                 .child("Places");

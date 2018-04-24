@@ -32,6 +32,7 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-auth:3.2.1'
     implementation 'com.firebaseui:firebase-ui-database:3.2.1'
     implementation 'com.google.firebase:firebase-storage:11.8.0'
+    implementation 'com.github.MKergall.osmbonuspack:OSMBonusPack:v5.7'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
         exclude group: 'com.android.support', module: 'support-annotations'
@@ -39,9 +40,25 @@ dependencies {
     compile 'com.android.support:support-v4:26.1.0'
     compile 'com.firebase:firebase-client-android:2.5.2'
     compile 'com.firebaseui:firebase-ui:0.3.0'
-    compile 'org.osmdroid:osmdroid-android:5.1@aar'
 
+    implementation 'com.google.firebase:firebase-auth:11.8.0'
+    implementation 'com.firebaseui:firebase-ui-auth:3.2.2'
+    implementation 'com.firebaseui:firebase-ui-database:3.2.1'
+    implementation 'com.firebase:firebase-client-android:2.5.0+'
+    implementation 'com.firebaseui:firebase-ui:0.3.0'
+    compile 'com.google.firebase:firebase-core:11.8.0'
+    compile 'com.google.firebase:firebase-database:11.8.0'
 
+    implementation 'org.osmdroid:osmdroid-android:+'
+    implementation 'com.github.MKergall.osmbonuspack:OSMBonusPack:v5.7'
+
+    implementation 'android.arch.lifecycle:runtime:1.1.1'
+    implementation 'android.arch.lifecycle:extensions:1.1.1'
+
+    annotationProcessor "android.arch.lifecycle:compiler:1.1.1"
+
+    implementation 'android.arch.persistence.room:runtime:1.1.0-beta2'
+    annotationProcessor "android.arch.persistence.room:compiler:1.1.0-beta2"
 }
 
 
